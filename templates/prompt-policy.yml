@@ -1,0 +1,120 @@
+# PromptLint Policy Configuration
+# Documentation: https://github.com/satinath-nit/promptlint
+
+version: 1
+
+policies:
+  # Block internal hostnames and IP addresses
+  - id: no-internal-hostnames
+    description: "Prompts must not include internal hostnames or IP ranges"
+    severity: error
+    match:
+      type: regex
+      pattern: "(?:\\.internal\\.|corp\\.|10\\.\\d+\\.\\d+\\.\\d+|192\\.168\\.)"
+    actions:
+      - type: block
+      - type: message
+        text: "Remove internal hostnames and IP addresses before sending to external LLMs"
+
+  # Detect and warn about email addresses
+  - id: pii-email
+    description: "Detect email addresses in prompts"
+    severity: warn
+    match:
+      type: built_in
+      detector: email
+    actions:
+      - type: annotate
+      - type: suggest_redact
+
+  # Detect phone numbers
+  - id: pii-phone
+    description: "Detect phone numbers in prompts"
+    severity: warn
+    match:
+      type: built_in
+      detector: phone
+    actions:
+      - type: annotate
+      - type: suggest_redact
+
+  # Detect Social Security Numbers
+  - id: pii-ssn
+    description: "Detect Social Security Numbers in prompts"
+    severity: error
+    match:
+      type: built_in
+      detector: ssn
+    actions:
+      - type: block
+      - type: suggest_redact
+
+  # Detect credit card numbers
+  - id: pii-credit-card
+    description: "Detect credit card numbers in prompts"
+    severity: error
+    match:
+      type: built_in
+      detector: credit_card
+    actions:
+      - type: block
+      - type: suggest_redact
+
+  # Detect API keys and secrets
+  - id: secrets-api-key
+    description: "Detect API keys in prompts"
+    severity: error
+    match:
+      type: built_in
+      detector: api_key
+    actions:
+      - type: block
+      - type: message
+        text: "Never include API keys in prompts"
+
+  # Detect AWS access keys
+  - id: secrets-aws-key
+    description: "Detect AWS access keys in prompts"
+    severity: error
+    match:
+      type: built_in
+      detector: aws_key
+    actions:
+      - type: block
+      - type: message
+        text: "Never include AWS credentials in prompts"
+
+  # Detect JWT tokens
+  - id: secrets-jwt
+    description: "Detect JWT tokens in prompts"
+    severity: error
+    match:
+      type: built_in
+      detector: jwt
+    actions:
+      - type: block
+      - type: message
+        text: "Never include authentication tokens in prompts"
+
+  # Example: Block internal project codenames (customize this)
+  - id: restricted-terms
+    description: "Block internal project codenames"
+    severity: warn
+    match:
+      type: list
+      terms:
+        - "Project Aurora"
+        - "Internal Codename"
+      case_sensitive: false
+    actions:
+      - type: warn
+      - type: message
+        text: "Use generic product names instead of internal codenames"
+    enabled: false  # Enable and customize for your organization
+
+# Environment-specific overrides (optional)
+# overrides:
+#   - env: development
+#     disable_policies:
+#       - pii-email
+#       - pii-phone

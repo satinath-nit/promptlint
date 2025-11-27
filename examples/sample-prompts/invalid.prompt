@@ -1,0 +1,12 @@
+You are a helpful assistant. Please help me with the following:
+
+Contact John Smith at john.smith@company.com or call him at 555-123-4567.
+
+His SSN is 123-45-6789 and his credit card number is 4111111111111111.
+
+Connect to the database at db.internal.company.com using the API key:
+api_key = "sk-1234567890abcdefghijklmnop"
+
+Also check the AWS credentials: AKIAIOSFODNN7EXAMPLE
+
+This is related to Project Aurora - our internal codename for the new platform.

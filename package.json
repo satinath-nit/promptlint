@@ -1,0 +1,63 @@
+{
+  "name": "promptlint",
+  "version": "0.1.0",
+  "description": "A lightweight, policy-as-code tool for validating LLM prompts against enterprise compliance rules",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "promptlint": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build",
+    "cli": "ts-node src/cli/index.ts"
+  },
+  "keywords": [
+    "llm",
+    "prompt",
+    "validation",
+    "security",
+    "pii",
+    "guardrails",
+    "compliance",
+    "policy-as-code",
+    "ai",
+    "openai",
+    "claude",
+    "enterprise"
+  ],
+  "author": "Satinath Mondal <satinathra@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satinath-nit/promptlint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/satinath-nit/promptlint/issues"
+  },
+  "homepage": "https://github.com/satinath-nit/promptlint#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "glob": "^10.3.10",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.2"
+  }
+}

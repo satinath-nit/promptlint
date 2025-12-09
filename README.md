@@ -364,7 +364,7 @@ npm run build
 npm run cli -- scan ./examples
 ```
 
-## Roadmap
+## Roadmap/ Future Scope
 
 - [ ] VS Code extension
 - [ ] IntelliJ plugin

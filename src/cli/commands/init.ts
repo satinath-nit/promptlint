@@ -3,7 +3,7 @@ import * as path from 'path';
 import chalk from 'chalk';
 
 const DEFAULT_POLICY_TEMPLATE = `# PromptLint Policy Configuration
-# Documentation: https://github.com/satinath-nit/promptlint
+# Documentation: https://github.com/CodeNextGen/promptlint
 
 version: 1
 

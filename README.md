@@ -367,22 +367,55 @@ npm run cli -- scan ./examples
 
 ## Agent Skills Integration
 
-PromptLint includes an [Agent Skill](https://agentskills.io) that enables AI agents (like Claude Code, Cursor, etc.) to use PromptLint for compliance checking. The skill is located in the `agentskill/promptlint-compliance/` directory.
+PromptLint includes a comprehensive [Agent Skill](https://agentskills.io) that enables AI agents (like Claude Code, Cursor, GitHub Copilot, etc.) to use PromptLint for compliance checking.
 
-### Using the Agent Skill
+### 📁 Agent Skill Documentation
 
-Copy the `agentskill/promptlint-compliance/` directory to your agent's skills folder:
+The skill is located in [`agentskill/promptlint-compliance/`](./agentskill/promptlint-compliance/) and includes:
 
-- **Claude Code**: `~/.claude/skills/`
-- **Cursor**: `.cursor/skills/`
-- **VS Code / Copilot**: `.github/skills/`
+- **[README.md](./agentskill/promptlint-compliance/README.md)** - Quick start and overview
+- **[SKILL.md](./agentskill/promptlint-compliance/SKILL.md)** - Main skill specification
+- **[IMPLEMENTATION.md](./agentskill/promptlint-compliance/IMPLEMENTATION.md)** - Advanced patterns and integration
+- **[TUTORIAL.md](./agentskill/promptlint-compliance/TUTORIAL.md)** - Step-by-step tutorials
+- **[FAQ.md](./agentskill/promptlint-compliance/FAQ.md)** - Frequently asked questions
+- **[POLICY-EXAMPLES.md](./agentskill/promptlint-compliance/references/POLICY-EXAMPLES.md)** - Policy configurations
 
-The skill teaches agents how to:
-- Validate prompts for PII and secrets before sending to LLMs
-- Set up compliance policies for prompt validation
-- Integrate PromptLint into CI/CD pipelines
+### 🚀 Installing the Skill
 
-For more information, see the [Agent Skills specification](https://agentskills.io/specification).
+Copy the skill directory to your agent's skills folder:
+
+**Claude Code:**
+```bash
+cp -r agentskill/promptlint-compliance ~/.claude/skills/
+```
+
+**Cursor:**
+```bash
+cp -r agentskill/promptlint-compliance .cursor/skills/
+```
+
+**VS Code / GitHub Copilot:**
+```bash
+cp -r agentskill/promptlint-compliance .github/skills/
+```
+
+### 🤖 Agent Capabilities
+
+Once installed, AI agents can:
+
+- ✅ **Initialize compliance policies** - Create policy files with recommended rules
+- ✅ **Validate prompts** - Scan for PII, secrets, and policy violations
+- ✅ **Generate reports** - Output in text, JSON, or SARIF format
+- ✅ **Set up CI/CD** - Automate validation in GitHub Actions, GitLab CI, etc.
+- ✅ **Create custom policies** - Build organization-specific rules
+- ✅ **Explain violations** - Provide remediation guidance
+
+### 📖 Learn More
+
+- [Quick Start Guide](./agentskill/promptlint-compliance/README.md)
+- [Implementation Patterns](./agentskill/promptlint-compliance/IMPLEMENTATION.md)
+- [Step-by-Step Tutorials](./agentskill/promptlint-compliance/TUTORIAL.md)
+- [Agent Skills Specification](https://agentskills.io/specification)
 
 ## Roadmap/ Future Scope
 
@@ -401,4 +434,4 @@ Apache License 2.0 - see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Satinath Mondal** - [GitHub](https://github.com/satinath-nit) | [LinkedIn](https://www.linkedin.com/in/satinathmondal/)
+**CodeNextGen** - [GitHub](https://github.com/CodeNextGen)

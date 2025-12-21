@@ -1,6 +1,6 @@
 {
-  "name": "promptlint",
-  "version": "0.1.0",
+  "name": "@llmprompt/promptlint",
+  "version": "0.1.2",
   "description": "A lightweight, policy-as-code tool for validating LLM prompts against enterprise compliance rules",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -33,12 +33,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/satinath-nit/promptlint.git"
+    "url": "https://github.com/CodeNextGen/promptlint.git"
   },
   "bugs": {
-    "url": "https://github.com/satinath-nit/promptlint/issues"
+    "url": "https://github.com/CodeNextGen/promptlint/issues"
   },
-  "homepage": "https://github.com/satinath-nit/promptlint#readme",
+  "homepage": "https://github.com/CodeNextGen/promptlint#readme",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -55,6 +55,7 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@types/chalk": "^0.4.31",
     "@types/glob": "^8.1.0",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.10.0",

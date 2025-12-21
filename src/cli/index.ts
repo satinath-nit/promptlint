@@ -14,7 +14,7 @@ const program = new Command();
 program
   .name('promptlint')
   .description('A lightweight, policy-as-code tool for validating LLM prompts against enterprise compliance rules')
-  .version('0.1.0');
+  .version('0.1.2');
 
 program
   .command('init')

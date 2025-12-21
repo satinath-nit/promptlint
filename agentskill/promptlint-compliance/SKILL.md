@@ -241,7 +241,252 @@ if (!result.allowed) {
 
 **False positives**: Adjust policy severity or add environment overrides to disable specific policies in development.
 
+## Documentation Structure
+
+This skill includes comprehensive documentation:
+
+- **[README.md](./README.md)** - Quick start guide and overview
+- **[QUICK-REFERENCE.md](./QUICK-REFERENCE.md)** - Commands, patterns, and troubleshooting at a glance
+- **[IMPLEMENTATION.md](./IMPLEMENTATION.md)** - Detailed implementation patterns and advanced usage
+- **[TUTORIAL.md](./TUTORIAL.md)** - Step-by-step tutorials for common scenarios
+- **[FAQ.md](./FAQ.md)** - Frequently asked questions and answers
+- **[POLICY-EXAMPLES.md](./references/POLICY-EXAMPLES.md)** - Policy configuration examples
+
+## Advanced Usage
+
+### Multi-Stage Validation
+
+Validate prompts through multiple policy stages for comprehensive coverage:
+
+```typescript
+const piiValidator = await createValidator({ policyPath: './pii-policy.yml' });
+const secretsValidator = await createValidator({ policyPath: './secrets-policy.yml' });
+
+let cleanPrompt = userPrompt;
+
+// Stage 1: PII
+const piiResult = piiValidator.validate(cleanPrompt);
+cleanPrompt = piiResult.redactedPrompt ?? cleanPrompt;
+
+// Stage 2: Secrets
+const secretsResult = secretsValidator.validate(cleanPrompt);
+if (!secretsResult.allowed) {
+  throw new Error('Secrets detected');
+}
+
+await sendToLLM(secretsResult.redactedPrompt ?? cleanPrompt);
+```
+
+### Environment-Based Configuration
+
+Use different policies per environment:
+
+```typescript
+const env = process.env.NODE_ENV || 'development';
+const policyMap = {
+  development: './policies/dev-policy.yml',
+  staging: './policies/staging-policy.yml',
+  production: './policies/prod-policy.yml'
+};
+
+const validator = await createValidator({
+  policyPath: policyMap[env],
+  environment: env
+});
+```
+
+### Batch Validation
+
+Validate multiple prompts efficiently:
+
+```typescript
+const validator = await createValidator({ policyPath: './policy.yml' });
+
+const results = prompts.map(prompt => ({
+  prompt,
+  result: validator.validate(prompt)
+}));
+
+const failed = results.filter(r => !r.result.allowed);
+console.log(`${failed.length} of ${prompts.length} prompts failed validation`);
+```
+
+## Helper Scripts
+
+### Initialize Policy Script
+
+```bash
+#!/bin/bash
+# scripts/init-policy.sh
+./agentskill/promptlint-compliance/scripts/init.sh prompt-policy.yml
+```
+
+### Scan Script
+
+```bash
+#!/bin/bash
+# scripts/scan-prompts.sh
+./agentskill/promptlint-compliance/scripts/scan.sh ./prompts prompt-policy.yml
+```
+
+Make scripts executable:
+
+```bash
+chmod +x agentskill/promptlint-compliance/scripts/*.sh
+```
+
+## Real-World Examples
+
+### Example 1: Customer Support Bot
+
+Prevent PII leakage in support conversations:
+
+```yaml
+version: 1
+policies:
+  - id: pii-email-block
+    severity: error
+    match:
+      type: built_in
+      detector: email
+    actions:
+      - type: block
+      - type: message
+        text: "Please don't include email addresses. Use customer ID instead."
+
+  - id: pii-phone-block
+    severity: error
+    match:
+      type: built_in
+      detector: phone
+    actions:
+      - type: block
+      - type: message
+        text: "Please don't include phone numbers. Reference ticket number instead."
+```
+
+### Example 2: Code Assistant
+
+Prevent secrets in code snippets shared with LLMs:
+
+```yaml
+version: 1
+policies:
+  - id: secrets-all
+    severity: error
+    match:
+      type: built_in
+      detector: api_key
+    actions:
+      - type: block
+      - type: message
+        text: "Remove API keys. Use environment variables or placeholders."
+
+  - id: aws-credentials
+    severity: error
+    match:
+      type: built_in
+      detector: aws_key
+    actions:
+      - type: block
+```
+
+### Example 3: Enterprise LLM Gateway
+
+Block internal references:
+
+```yaml
+version: 1
+policies:
+  - id: internal-domains
+    severity: error
+    match:
+      type: regex
+      pattern: "(?:\\.internal\\.|corp\\.|intranet\\.)"
+    actions:
+      - type: block
+
+  - id: project-codenames
+    severity: error
+    match:
+      type: list
+      terms:
+        - "Project Aurora"
+        - "Operation Phoenix"
+      case_sensitive: false
+    actions:
+      - type: block
+```
+
+## Performance Optimization
+
+### Cache Validators
+
+```typescript
+const validatorCache = new Map();
+
+async function getValidator(policyPath: string) {
+  if (!validatorCache.has(policyPath)) {
+    const validator = await createValidator({ policyPath });
+    validatorCache.set(policyPath, validator);
+  }
+  return validatorCache.get(policyPath);
+}
+```
+
+### Async Validation
+
+```typescript
+const results = await Promise.all(
+  prompts.map(prompt =>
+    validator.validate(prompt)
+  )
+);
+```
+
+## Monitoring and Logging
+
+### Log Violations for Audit
+
+```typescript
+const result = validator.validate(prompt);
+
+if (result.violations.length > 0) {
+  logger.warn('Prompt violations detected', {
+    userId: user.id,
+    violations: result.violations.map(v => v.policyId),
+    timestamp: new Date().toISOString()
+  });
+}
+```
+
+### Metrics Collection
+
+```typescript
+const metrics = {
+  totalValidations: 0,
+  blocked: 0,
+  warned: 0,
+  violationsByPolicy: {}
+};
+
+const result = validator.validate(prompt);
+metrics.totalValidations++;
+
+if (!result.allowed) {
+  metrics.blocked++;
+}
+
+result.violations.forEach(v => {
+  metrics.violationsByPolicy[v.policyId] =
+    (metrics.violationsByPolicy[v.policyId] || 0) + 1;
+});
+```
+
 ## References
 
 - [PromptLint GitHub Repository](https://github.com/CodeNextGen/promptlint)
 - [Agent Skills Specification](https://agentskills.io/specification)
+- [Implementation Guide](./IMPLEMENTATION.md)
+- [Tutorial](./TUTORIAL.md)
+- [Policy Examples](./references/POLICY-EXAMPLES.md)

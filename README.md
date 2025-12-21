@@ -316,6 +316,7 @@ By default, PromptLint scans files matching these patterns:
 - `**/prompts/**/*.md`
 - `**/prompts/**/*.yaml`
 - `**/prompts/**/*.yml`
+- `**/SKILL.md` (Agent Skills)
 
 Excluded by default:
 - `**/node_modules/**`
@@ -357,12 +358,31 @@ Contributions are welcome! Here are some ways you can contribute:
 ### Development Setup
 
 ```bash
-git clone https://github.com/satinath-nit/promptlint.git
+git clone https://github.com/CodeNextGen/promptlint.git
 cd promptlint
 npm install
 npm run build
 npm run cli -- scan ./examples
 ```
+
+## Agent Skills Integration
+
+PromptLint includes an [Agent Skill](https://agentskills.io) that enables AI agents (like Claude Code, Cursor, etc.) to use PromptLint for compliance checking. The skill is located in the `agentskill/promptlint-compliance/` directory.
+
+### Using the Agent Skill
+
+Copy the `agentskill/promptlint-compliance/` directory to your agent's skills folder:
+
+- **Claude Code**: `~/.claude/skills/`
+- **Cursor**: `.cursor/skills/`
+- **VS Code / Copilot**: `.github/skills/`
+
+The skill teaches agents how to:
+- Validate prompts for PII and secrets before sending to LLMs
+- Set up compliance policies for prompt validation
+- Integrate PromptLint into CI/CD pipelines
+
+For more information, see the [Agent Skills specification](https://agentskills.io/specification).
 
 ## Roadmap/ Future Scope
 
@@ -373,6 +393,7 @@ npm run cli -- scan ./examples
 - [ ] LLM-assisted detection mode
 - [ ] Web dashboard for scan reports
 - [ ] Policy library repository
+- [x] Agent Skills integration
 
 ## License
 

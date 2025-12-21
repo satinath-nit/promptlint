@@ -26,6 +26,7 @@ const DEFAULT_FILE_PATTERNS = [
   '**/prompts/**/*.md',
   '**/prompts/**/*.yaml',
   '**/prompts/**/*.yml',
+  '**/SKILL.md',
 ];
 
 const DEFAULT_EXCLUDE_PATTERNS = [

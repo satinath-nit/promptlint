@@ -73,7 +73,7 @@ export const formatAsSarif = (summary: ScanSummary): string => {
           driver: {
             name: 'promptlint',
             version: '0.1.0',
-            informationUri: 'https://github.com/CodeNextGen/promptlint',
+            informationUri: 'https://github.com/youcommit/promptlint',
             rules: getUniqueRules(summary),
           },
         },

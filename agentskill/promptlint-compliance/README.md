@@ -418,9 +418,9 @@ policies:
 
 ### Getting Help
 
-- 📚 [Full Documentation](https://github.com/CodeNextGen/promptlint)
-- 🐛 [Report Issues](https://github.com/CodeNextGen/promptlint/issues)
-- 💬 [Discussions](https://github.com/CodeNextGen/promptlint/discussions)
+- 📚 [Full Documentation](https://github.com/youcommit/promptlint)
+- 🐛 [Report Issues](https://github.com/youcommit/promptlint/issues)
+- 💬 [Discussions](https://github.com/youcommit/promptlint/discussions)
 
 ## Contributing
 
@@ -444,7 +444,7 @@ Apache License 2.0 - See [LICENSE](../../../LICENSE) for details.
 
 ## Related Resources
 
-- [PromptLint Repository](https://github.com/CodeNextGen/promptlint)
+- [PromptLint Repository](https://github.com/youcommit/promptlint)
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [NIST AI Risk Management](https://www.nist.gov/itl/ai-risk-management-framework)

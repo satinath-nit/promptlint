@@ -641,6 +641,6 @@ try {
 
 ## References
 
-- [PromptLint GitHub Repository](https://github.com/CodeNextGen/promptlint)
+- [PromptLint GitHub Repository](https://github.com/youcommit/promptlint)
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [Policy Examples](./references/POLICY-EXAMPLES.md)

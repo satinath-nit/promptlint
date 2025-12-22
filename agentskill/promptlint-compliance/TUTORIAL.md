@@ -813,6 +813,6 @@ jobs:
 
 ## Additional Resources
 
-- [PromptLint GitHub](https://github.com/CodeNextGen/promptlint)
+- [PromptLint GitHub](https://github.com/youcommit/promptlint)
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [SARIF Documentation](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning)

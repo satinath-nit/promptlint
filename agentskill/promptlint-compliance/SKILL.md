@@ -4,9 +4,9 @@ description: Validates LLM prompts against enterprise compliance policies using 
 license: Apache-2.0
 compatibility: Requires Node.js 18+ and npm. Works on Linux, macOS, and Windows.
 metadata:
-  author: CodeNextGen
+  author: youcommit
   version: "1.0"
-  repository: https://github.com/CodeNextGen/promptlint
+  repository: https://github.com/youcommit/promptlint
   keywords:
     - compliance
     - security
@@ -485,7 +485,7 @@ result.violations.forEach(v => {
 
 ## References
 
-- [PromptLint GitHub Repository](https://github.com/CodeNextGen/promptlint)
+- [PromptLint GitHub Repository](https://github.com/youcommit/promptlint)
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [Implementation Guide](./IMPLEMENTATION.md)
 - [Tutorial](./TUTORIAL.md)

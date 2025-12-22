@@ -587,8 +587,8 @@ await db.violations.insert({
 ### Where can I get help?
 
 - **Documentation**: [Implementation Guide](./IMPLEMENTATION.md), [Tutorial](./TUTORIAL.md)
-- **GitHub Issues**: [Report bugs or request features](https://github.com/CodeNextGen/promptlint/issues)
-- **Discussions**: [Ask questions](https://github.com/CodeNextGen/promptlint/discussions)
+- **GitHub Issues**: [Report bugs or request features](https://github.com/youcommit/promptlint/issues)
+- **Discussions**: [Ask questions](https://github.com/youcommit/promptlint/discussions)
 
 ### How do I report a bug?
 
@@ -634,4 +634,4 @@ Community support via GitHub. Enterprise support options coming soon.
 
 ---
 
-**Didn't find your answer?** Open an issue or discussion on [GitHub](https://github.com/CodeNextGen/promptlint).
+**Didn't find your answer?** Open an issue or discussion on [GitHub](https://github.com/youcommit/promptlint).

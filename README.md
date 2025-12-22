@@ -358,7 +358,7 @@ Contributions are welcome! Here are some ways you can contribute:
 ### Development Setup
 
 ```bash
-git clone https://github.com/CodeNextGen/promptlint.git
+git clone https://github.com/youcommit/promptlint.git
 cd promptlint
 npm install
 npm run build
@@ -434,4 +434,4 @@ Apache License 2.0 - see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**CodeNextGen** - [GitHub](https://github.com/CodeNextGen)
+**youcommit** - [GitHub](https://github.com/youcommit)

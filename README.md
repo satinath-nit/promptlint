@@ -16,6 +16,7 @@ PromptLint helps enterprises safely adopt LLMs by validating prompts against con
 - **Runtime Validation**: Lightweight SDK to validate prompts before sending to LLMs
 - **Built-in Detectors**: PII detection (email, phone, SSN, credit cards), secrets, and more
 - **No Gateway Required**: Integrates directly into your apps - no proxy architecture needed
+- **Agent Skills Integration**: Integrate with AI agents like Agent Skills to validate prompts in AI workflows
 
 ## Installation
 

@@ -1,6 +1,6 @@
 {
   "name": "@llmprompt/promptlint",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A lightweight, policy-as-code tool for validating LLM prompts against enterprise compliance rules",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
